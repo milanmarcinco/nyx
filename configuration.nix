@@ -50,7 +50,7 @@
       checkReversePath = "loose";
 
       allowedTCPPorts = [
-        80 443
+        22 80 443
       ];
 
       allowedTCPPortRanges = [
@@ -63,9 +63,7 @@
 
       interfaces = {
         "tailscale0" = {
-          allowedTCPPorts = [
-            22
-          ];
+          allowedTCPPorts = [];
         };
       };
     };
