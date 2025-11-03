@@ -107,7 +107,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     nano wget curl tmux htop fastfetch
-    tailscale
+    git tailscale
   ];
 
   virtualisation = {
