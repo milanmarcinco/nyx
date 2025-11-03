@@ -101,6 +101,14 @@
     description = "Milan Marcinco";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
+
+    openssh = {
+      authorizedKeys = {
+        keyFiles = [
+          /etc/nixos/ssh/authorized_keys
+        ];
+      };
+    };
   };
 
   # List packages installed in system profile. To search, run:
