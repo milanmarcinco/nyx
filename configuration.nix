@@ -62,11 +62,13 @@
       checkReversePath = "loose";
     };
 
-     interfaces = {
-       "tailscale0" = {
-         allowedTCPPorts = [ 22 ]
-       };
-     };
+    interfaces = {
+      "tailscale0" = {
+        allowedTCPPorts = [
+          22
+        ];
+      };
+    };
   };
 
   services = {
