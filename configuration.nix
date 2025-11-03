@@ -47,6 +47,8 @@
     };
     
     firewall = {
+      checkReversePath = "loose";
+
       allowedTCPPorts = [
         80 443
       ];
@@ -59,14 +61,12 @@
 
       ];
 
-      checkReversePath = "loose";
-    };
-
-    interfaces = {
-      "tailscale0" = {
-        allowedTCPPorts = [
-          22
-        ];
+      interfaces = {
+        "tailscale0" = {
+          allowedTCPPorts = [
+            22
+          ];
+        };
       };
     };
   };
