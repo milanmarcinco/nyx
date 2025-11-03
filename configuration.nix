@@ -86,7 +86,7 @@
         INTERNET_IFACE = "enp3s0";
         WIFI_IFACE = "wlp1s0";
         SSID = "nyx";
-        PASSPHRASE = builtins.readFile /etc/nixos/secrets/hotspot_pass;
+        PASSPHRASE = builtins.readFile /etc/nixos/secrets/hotspot-psk;
       };
     };
 
