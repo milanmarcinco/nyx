@@ -33,4 +33,6 @@ sudo nixos-rebuild switch
 sudo tailscale up --auth-key=<AUTH_KEY>
 ```
 
-7. Enjoy.
+7. Copy over configs and start services such as `traefik`.
+
+8. Enjoy.

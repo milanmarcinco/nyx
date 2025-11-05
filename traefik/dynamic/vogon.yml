@@ -1,0 +1,29 @@
+http:
+  routers:
+    vogon-backend:
+      rule: Host(`api.vogon.marcinco.xyz`)
+      entryPoints:
+        - http
+      service: vogon-backend
+
+  services:
+    vogon-backend:
+      loadBalancer:
+        servers:
+          - url: http://localhost:3302
+
+tcp:
+  routers:
+    vogon-mqtt:
+      rule: HostSNI(`mqtt.vogon.marcinco.xyz`)
+      entryPoints:
+        - mqtts
+      service: vogon-mqtt
+      tls:
+        passthrough: true
+
+  services:
+    vogon-mqtt:
+      loadBalancer:
+        servers:
+          - address: localhost:3303
