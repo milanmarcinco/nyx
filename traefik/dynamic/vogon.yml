@@ -6,24 +6,35 @@ http:
         - http
       service: vogon-backend
 
+    vogon-emqx-dashboadr:
+      rule: Host(`emqx.vogon.marcinco.xyz`)
+      entryPoints:
+        - http
+      service: vogon-emqx-dashboard
+
   services:
     vogon-backend:
       loadBalancer:
         servers:
-          - url: http://localhost:3302
+          - url: http://localhost:8000
+
+    vogon-emqx-dashboard:
+      loadBalancer:
+        servers:
+          - url: http://localhost:8003
 
 tcp:
   routers:
-    vogon-mqtt:
+    vogon-emqx:
       rule: HostSNI(`mqtt.vogon.marcinco.xyz`)
       entryPoints:
         - mqtts
-      service: vogon-mqtt
+      service: vogon-emqx
       tls:
         passthrough: true
 
   services:
-    vogon-mqtt:
+    vogon-emqx:
       loadBalancer:
         servers:
-          - address: localhost:3303
+          - address: localhost:8002
