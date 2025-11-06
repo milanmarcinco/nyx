@@ -50,7 +50,7 @@
       checkReversePath = "loose";
 
       allowedTCPPorts = [
-        22 80 443
+        22 80 443 8883
       ];
 
       allowedTCPPortRanges = [
