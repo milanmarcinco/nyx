@@ -54,7 +54,7 @@
       ];
 
       allowedTCPPortRanges = [
-        # { from = 3000; to = 4000 }
+        { from = 9000; to = 9999; }
       ];
 
       allowedUDPPorts = [
