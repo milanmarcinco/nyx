@@ -119,7 +119,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nano wget curl tmux htop btop fastfetch
+    nano wget curl tmux
+    lm_sensors htop btop fastfetch
     git tailscale
   ];
 
