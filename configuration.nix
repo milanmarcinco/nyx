@@ -51,7 +51,6 @@
 
       allowedTCPPorts = [
         22 80 443 8883
-        6443 # k3s API server
       ];
 
       allowedTCPPortRanges = [
@@ -64,7 +63,9 @@
 
       interfaces = {
         "tailscale0" = {
-          allowedTCPPorts = [];
+          allowedTCPPorts = [
+            6443 # k3s API server
+          ];
         };
       };
     };
