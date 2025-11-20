@@ -98,6 +98,11 @@
     tailscale = {
       enable = true;
     };
+
+    k3s = {
+      enable = true;
+      role = "server";
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
