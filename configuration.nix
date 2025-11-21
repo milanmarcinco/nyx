@@ -129,7 +129,7 @@
   environment.systemPackages = with pkgs; [
     nano wget curl tmux
     lm_sensors htop btop fastfetch
-    git tailscale
+    git tailscale k3d
   ];
 
   virtualisation = {
