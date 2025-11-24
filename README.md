@@ -2,37 +2,26 @@
 
 1. Clone the repository anywhere on the NixOS machine.
 
-2. Run the commands below to copy over the necessary files to the NixOS configuration directory.
+2. Rebuild.
 
 ```
-chmod +x secrets/copy.sh
-sudo ./secrets/copy.sh
+sudo nixos-rebuild switch --flake .#nyx
 ```
 
-3. Configure the hotspot password in the following file:
-
-```
-/etc/nixos/secrets/hotspot-psk
-```
-
-4. Specify authorized SSH keys in the following file:
-
-```
-/etc/nixos/ssh/authorized_keys
-```
-
-5. Rebuild.
-
-```
-sudo nixos-rebuild switch
-```
-
-6. Enable tailscale using the following command and a generated auth key.
+3. Enable tailscale using the following command and a generated auth key.
 
 ```
 sudo tailscale up --auth-key=<AUTH_KEY>
 ```
 
-7. Copy over configs and start services such as `traefik`.
+4. Enjoy.
 
-8. Enjoy.
+---
+
+Command to create encrypted .age file with secrets. Needs to be run inside the `secrets` directory.
+
+```
+nix --extra-experimental-features nix-command \
+    --extra-experimental-features flakes \
+    run github:ryantm/agenix -- -e <secret_name>.age
+```
