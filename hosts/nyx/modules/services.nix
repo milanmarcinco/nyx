@@ -1,6 +1,15 @@
 { config, pkgs, ... }:
 
-{
+let
+  startScript = pkgs.writeScript "start-create-ap" ''
+    #!${pkgs.bash}/bin/bash
+
+    WIFI_PASSWORD=$(cat /run/agenix/hotspot-psk)
+
+    exec ${pkgs.linux-wifi-hotspot}/bin/create_ap \
+      wlp1s0 enp3s0 nyx "$WIFI_PASSWORD"
+  '';
+in {
   services = {
     xserver.xkb = {
       layout = "us";
@@ -16,14 +25,7 @@
     };
 
     create_ap = {
-      enable = false;
-
-      settings = {
-        INTERNET_IFACE = "enp3s0";
-        WIFI_IFACE = "wlp1s0";
-        SSID = "nyx";
-        PASSPHRASE_FILE = "/run/agenix/hotspot-psk";
-      };
+      enable = true;
     };
 
     tailscale = {
@@ -35,4 +37,6 @@
       role = "server";
     };
   };
+
+  systemd.services.create-ap.serviceConfig.ExecStart = startScript;
 }
