@@ -40,6 +40,12 @@
             entryPoints = [ "http" ];
             service = "vogon-emqx-dashboard";
           };
+
+          vogon-grafana = {
+            rule = "Host(`grafana.vogon.marcinco.xyz`)";
+            entryPoints = [ "http" ];
+            service = "vogon-grafana";
+          };
         };
 
         services = {
@@ -52,6 +58,12 @@
           vogon-emqx-dashboard = {
             loadBalancer.servers = [
               { url = "http://localhost:8003"; }
+            ];
+          };
+
+          vogon-grafana = {
+            loadBalancer.servers = [
+              { url = "http://localhost:8004"; }
             ];
           };
         };
