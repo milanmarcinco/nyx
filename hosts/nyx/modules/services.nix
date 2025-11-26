@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   startScript = pkgs.writeScript "start-create-ap" ''
@@ -38,5 +38,10 @@ in {
     };
   };
 
-  systemd.services.create-ap.serviceConfig.ExecStart = startScript;
+  systemd.services.create_ap.serviceConfig = {
+      ExecStart = lib.mkForce [
+        ""
+        startScript
+      ];
+    };
 }
