@@ -18,6 +18,8 @@
     ./modules/services.nix
     ./modules/packages.nix
 
+    ./modules/traefik.nix
+
     ./modules/agenix.nix
 
     ./modules/system.nix
