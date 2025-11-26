@@ -18,7 +18,7 @@
     ./modules/services.nix
     ./modules/packages.nix
 
-    ./modules/traefik.nix
+    ./modules/traefik/traefik.nix
 
     ./modules/agenix.nix
 
