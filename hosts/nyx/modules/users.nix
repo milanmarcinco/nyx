@@ -4,7 +4,7 @@
   users.users.milan = {
     isNormalUser = true;
     description = "Milan Marcinco";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "podman" ];
 
     packages = with pkgs; [ ];
 
