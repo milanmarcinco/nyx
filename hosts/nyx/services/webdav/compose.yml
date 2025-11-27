@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     container_name: webdav
     ports:
-      - 6060:6060
+      - 6065:6065
     environment:
       WEBDAV_USERNAME: "${WEBDAV_USERNAME}"
       WEBDAV_PASSWORD: "${WEBDAV_PASSWORD}"
