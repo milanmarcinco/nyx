@@ -3,8 +3,6 @@ port: 6060
 
 # TLS-related settings if you want to enable TLS directly.
 tls: false
-cert:
-key:
 
 # Prefix to apply to the WebDAV path-ing. Default is '/'.
 prefix: /
@@ -23,7 +21,7 @@ behindProxy: true
 # The directory that will be able to be accessed by the users when connecting.
 # This directory will be used by users unless they have their own 'directory' defined.
 # Default is '.' (current directory).
-directory: .
+directory: /data
 
 # The default permissions for users. This is a case insensitive option. Possible
 # permissions: C (Create), R (Read), U (Update), D (Delete). You can combine multiple
@@ -56,55 +54,8 @@ log:
   outputs:
   - stderr
 
-# CORS configuration
-cors:
-  # Whether or not CORS configuration should be applied. Default is 'false'.
-  enabled: false
-  credentials: true
-  allowed_headers:
-    - Depth
-  allowed_hosts:
-    - http://localhost:8080
-  allowed_methods:
-    - GET
-  exposed_headers:
-    - Content-Length
-    - Content-Range
-
-# The list of users. If the list is empty, then there will be no authentication.
-# Otherwise, basic authentication will automatically be configured.
-#
-# If you're delegating the authentication to a different service, you can proxy
-# the username using basic authentication, and then disable webdav's password
-# check using the option:
-#
-# noPassword: true
 users:
   # Example 'admin' user with plaintext password.
-  - username: admin
-    password: admin
-  # Example 'john' user with bcrypt encrypted password, with custom directory.
-  # You can generate a bcrypt-encrypted password by using the 'webdav bcrypt'
-  # command lint utility.
-  # - username: john
-  #   password: "{bcrypt}$2y$10$zEP6oofmXFeHaeMfBNLnP.DO8m.H.Mwhd24/TOX2MWLxAExXi4qgi"
-  #   directory: /another/path
-  # Example user whose details will be picked up from the environment.
-  # - username: "{env}ENV_USERNAME"
-  #   password: "{env}ENV_PASSWORD"
-  # - username: basic
-  #   password: basic
-  #   # Override default permissions.
-  #   permissions: CRUD
-  #   rules:
-  #     # With this rule, the user CANNOT access {user directory}/some/files.
-  #     - path: /some/file
-  #       permissions: none
-  #     # With this rule, the user CAN create, read, update and delete within
-  #     # {user directory}/public/access.
-  #     - path: /public/access/
-  #       permissions: CRUD
-  #     # With this rule, the user CAN read and update all files ending with .js.
-  #     # It uses a regular expression.
-  #     - regex: "^.+.js$"
-  #       permissions: RU
+  - username: {env}WEBDAV_USERNAME
+    password: {env}WEBDAV_PASSWORD
+    permission: CRUD
