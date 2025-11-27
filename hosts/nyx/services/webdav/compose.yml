@@ -1,0 +1,13 @@
+name: webdav
+
+services:
+  webdav:
+    image: ghcr.io/hacdias/webdav:v5.10
+    restart: unless-stopped
+    container_name: webdav-app
+    ports:
+      - 6060:6060
+    volumes:
+      - /home/milan/data/webdav:/data
+      - ./config.yml:/config.yml:ro
+    command: ["--config", "/config.yml"]

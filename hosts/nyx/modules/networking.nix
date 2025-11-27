@@ -22,7 +22,10 @@
       allowedUDPPorts = [ ];
 
       interfaces.tailscale0.allowedTCPPorts = [
-        22 80 443 8883
+        22 80 443
+        
+        8883 # mqtts
+        6060 # webdav
       ];
     };
   };
