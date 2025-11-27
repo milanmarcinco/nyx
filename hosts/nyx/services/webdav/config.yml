@@ -55,7 +55,6 @@ log:
   - stderr
 
 users:
-  # Example 'admin' user with plaintext password.
-  - username: {env}WEBDAV_USERNAME
-    password: {env}WEBDAV_PASSWORD
+  - username: "{env}WEBDAV_USERNAME"
+    password: "{env}WEBDAV_PASSWORD"
     permission: CRUD
