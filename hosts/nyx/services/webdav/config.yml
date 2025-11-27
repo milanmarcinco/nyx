@@ -57,4 +57,4 @@ log:
 users:
   - username: "{env}WEBDAV_USERNAME"
     password: "{env}WEBDAV_PASSWORD"
-    permission: CRUD
+    permissions: CRUD
