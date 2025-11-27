@@ -4,7 +4,7 @@ services:
   webdav:
     image: ghcr.io/hacdias/webdav:v5.10
     restart: unless-stopped
-    container_name: webdav-app
+    container_name: webdav
     ports:
       - 6060:6060
     volumes:
